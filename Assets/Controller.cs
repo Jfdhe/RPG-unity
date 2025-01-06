@@ -68,7 +68,8 @@ public class Controller : MonoBehaviour
             }
         }
     }
-    IEnumerator DamageDelay()
+    
+        IEnumerator DamageDelay()
     {
         canTakeDamage = false;
         yield return new WaitForSeconds(0.1f);

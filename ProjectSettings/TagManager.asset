@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - CinemachineTarget
+  - Item
+  - Lever
+  - Button
+  - Trampoline
   layers:
   - Default
   - TransparentFX
