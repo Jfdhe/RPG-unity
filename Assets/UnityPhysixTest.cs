@@ -6,10 +6,12 @@ public class UnityPhysixTest : MonoBehaviour
     public GameObject interactPanel,interactPanelScam,spike;
     private bool onLever,haveItem;
     private GameObject pickUpItem;
+    private PlayerHp playerHp;
     void Start()
     {
         interactPanelScam.SetActive(false);
         interactPanel.SetActive(false);
+        playerHp = GetComponent<PlayerHp>();
     }
 
     void Update()
@@ -29,12 +31,17 @@ public class UnityPhysixTest : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            playerHp.Damage(7);
+        }
+    }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-        }
+        
 
         if (hit.gameObject.CompareTag("Item"))
         {
@@ -67,8 +74,6 @@ public class UnityPhysixTest : MonoBehaviour
             hit.gameObject.GetComponent<ButtonPressed>().OnButtonPressed();
         }
     }
-    public void jumpBoost(int trampolineBounceStrenght)
-    {
-        GetComponent<Rigidbody>().AddForce(Vector3.up * trampolineBounceStrenght);
-    }
+    
+    
 }
